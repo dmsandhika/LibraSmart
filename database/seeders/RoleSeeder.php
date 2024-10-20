@@ -14,9 +14,40 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $role = Role::create(['name' => 'writer']);
-        $permission = Permission::create(['name' => 'View Dashboard']);
-        $role->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $adminRole = Role::create(['name' => 'admin']);
+        $userRole = Role::create(['name' => 'member']);
+
+        $permissions = [
+            'manage-users',
+            'manage-books',
+            'manage-categories',
+            'view-loans',
+            'confirm-returns',
+            'view-dashboard',
+            'download-reports',
+            'send-notifications',
+            'view-books',
+            'search-books',
+            'borrow-books',
+            'view-loan-history',
+            'return-books',
+            'update-profile',
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::create(['name' => $permission]);
+        }
+
+        // Assign permissions to roles
+        $adminRole->givePermissionTo($permissions);
+        $userRole->givePermissionTo([
+            'view-books',
+            'search-books',
+            'borrow-books',
+            'view-loan-history',
+            'return-books',
+            'update-profile',
+        ]);
     }
+
 }
