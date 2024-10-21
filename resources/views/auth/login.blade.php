@@ -1,83 +1,88 @@
 <x-guest-layout>
     <x-auth-session-status class="mb-4" :status="session('status')" />
-        <div
-        style="animation: slideInFromLeft 1s ease-out;"
-        class="max-w-md w-full bg-gradient-to-r from-blue-800 to-purple-600 rounded-xl shadow-2xl overflow-hidden p-8 space-y-8"
-        >
-        <h2
-            style="animation: appear 2s ease-out;"
-            class="text-center text-4xl font-extrabold text-white"
-        >
-            Welcome
-        </h2>
-        <p style="animation: appear 3s ease-out;" class="text-center text-gray-200">
-            Sign in to your account
-        </p>
-        <form method="POST" action="{{ route('login') }}" class="space-y-6">
-            @csrf
-            <div class="relative">
-            <input
-                placeholder="john@example.com"
-                class="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-purple-500"
-                required="required"
-                id="email"
-                name="email"
-                type="email"
-                value="{{ old('email') }}"
-                autofocus
-            />
-            <label
-                class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-purple-500 peer-focus:text-sm"
-                for="email"
-                >Email address</label
-            >
-            @error('email')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
-            @enderror
-            </div>
-            <div class="relative">
-            <input
-                placeholder="Password"
-                class="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-purple-500"
-                required="required"
-                id="password"
-                name="password"
-                type="password"
-            />
-            <label
-                class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-purple-500 peer-focus:text-sm"
-                for="password"
-                >Password</label
-            >
-            @error('password')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
-            @enderror
-            </div>
-            <div class="flex items-center justify-between">
-            <label class="flex items-center text-sm text-gray-200">
-                <input
-                class="form-checkbox h-4 w-4 text-purple-600 bg-gray-800 border-gray-300 rounded"
-                type="checkbox"
-                name="remember"
-                />
-                <span class="ml-2">Remember me</span>
-            </label>
-            <a class="text-sm text-purple-200 hover:underline" href="{{ route('password.request') }}">
-                Forgot your password?
-            </a>
-            </div>
-            <button
-            class="w-full py-2 px-4 bg-purple-500 hover:bg-purple-700 rounded-md shadow-lg text-white font-semibold transition duration-200"
-            type="submit"
-            >
-            Sign In
-            </button>
-        </form>
-        <div class="text-center text-gray-300">
-            Don't have an account?
-            <a class="text-purple-300 hover:underline" href="{{ route('register') }}">Sign up</a>
-        </div>
-        </div>
 
+        <x-guest-layout>
+
+            
+            <section class="bg-white">
+              <div class=" lg:min-h-screen ">
+                
+            
+                <main
+                  class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6 mt-12"
+                >
+                  <div class="max-w-xl lg:max-w-3xl">
+                    <a class="block text-blue-600" href="#">
+                      <span class="sr-only">Home</span>
+                     <img src="https://img.icons8.com/?size=100&id=xv9gnRfYNsNJ&format=png&color=000000" alt="">
+                    </a>
+            
+                    <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+                      Masuk LibraSmart
+                    </h1>
+            
+                    <p class="mt-4 leading-relaxed text-gray-500">
+                      Silahkan isi form untuk masuk akun sebelum melanjutkan
+                    </p>
+            
+                    <form action="{{ route('login') }}" method="POST" class="mt-8 grid grid-cols-6 gap-6">
+                      @csrf
+                      
+                      
+            
+                      <div class="col-span-6">
+                        <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
+            
+                        <input
+                          type="email"
+                          id="Email"
+                          name="email"
+                          class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" required
+                        /> 
+                      </div>
+                      @error('email')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                      <div class="col-span-6 ">
+                        <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
+            
+                        <input
+                          type="password"
+                          id="Password"
+                          name="password"
+                          class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                        />
+                        @error('password')
+                              <span class="text-red-500 text-sm">{{ $message }}</span>
+                          @enderror
+                      </div> 
+                      <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+                          <button
+                          class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
+                        type="submit"
+                          >
+                          Masuk
+                        </button>
+                        <p class="mt-4 text-sm text-gray-500 sm:mt-0">
+                          Belum Punya Akun?
+                          <a href="{{ route('register') }}" class="text-gray-700 underline">Daftar</a>.
+                        </p>
+                    </div>
+                    <div class="col-span-6 ">
+
+                        <a class="text-sm text-gray-700 hover:underline " href="{{ route('password.request') }}">
+                            Forgot your password?
+                        </a>
+                    </div>
+                   
+      
+                      
+                    </form>
+                  </div>
+                </main>
+              </div>
+            </section>
+            </x-guest-layout>
+            
 
 </x-guest-layout>

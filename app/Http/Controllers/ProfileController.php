@@ -17,7 +17,7 @@ class ProfileController extends Controller implements HasMiddleware
     {
         return [
            
-            new Middleware('permission:view-dashhboard', only: ['showDashboard']),
+            // new Middleware('permission:view-dashhboard', only: ['showDashboard']),
         ];
     }
     /**
