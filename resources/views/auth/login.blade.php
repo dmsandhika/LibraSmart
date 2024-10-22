@@ -1,17 +1,11 @@
 <x-guest-layout>
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <x-guest-layout>
-
-            
-            <section class="bg-white">
-              <div class=" lg:min-h-screen ">
-                
-            
-                <main
-                  class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6 mt-12"
-                >
-                  <div class="max-w-xl lg:max-w-3xl">
+  
+  
+  
+  
+  
+  <div class="max-w-xl lg:max-w-3xl">
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
                     <a class="block text-blue-600" href="#">
                       <span class="sr-only">Home</span>
                      <img src="https://img.icons8.com/?size=100&id=xv9gnRfYNsNJ&format=png&color=000000" alt="">
@@ -79,10 +73,7 @@
                       
                     </form>
                   </div>
-                </main>
-              </div>
-            </section>
-            </x-guest-layout>
+  
             
 
 </x-guest-layout>
