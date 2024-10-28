@@ -1,4 +1,4 @@
-<header class="bg-white">
+<header class="bg-white fixed w-full">
   <div class="mx-auto max-w-screen-xl px-4 py-5 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <div class="flex-1 md:flex md:items-center md:gap-12">
