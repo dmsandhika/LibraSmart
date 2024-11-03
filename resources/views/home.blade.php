@@ -1,7 +1,7 @@
 <x-layout>
 
        <div>
-        <div class="h-full w-full bg-cover bg-center flex items-center justify-center flex-col lg:pb-96" style="background-image: url('{{ asset('img/bg-home.svg') }}');">
+        <div class="pt-24 h-full w-full bg-cover bg-center flex items-center justify-center flex-col lg:pb-96" style="background-image: url('{{ asset('img/bg-home.svg') }}');">
             <div class="max-w-4xl lg:mt-36 px-4 text-center">
                 <h1 class="text-[#0d9488] text-6xl font-extrabold">Akses Buku, Artikel, dan Banyak Lagi Secara Gratis!</h1>
                 
