@@ -1,17 +1,19 @@
-
-<div class="w-60 h-80 bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
-  <div class="h-48 bg-gray-700 rounded-xl overflow-hidden group relative">
-    <img src="https://picsum.photos/200/300" alt="" class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110" />
+<div class="w-60 h-80 bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl relative overflow-hidden group ">
+  
+  <div class="absolute inset-0 bg-gray-700 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:h-full group-hover:rounded-none">
+    <img src="https://picsum.photos/200/300" alt="" class="w-full h-full object-cover" />
   </div>
   
-  
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-4 mt-2 relative z-10 opacity-100 transition-opacity duration-300 ease-in-out group-hover:opacity-0 bg-slate-300 p-5 rounded-xl">
     <div class="flex flex-row justify-between">
       <div class="flex flex-col">
-        <span class="text-xl font-bold text-gray-700">Lorem Ipsumr</span>
+        <span class="text-xl font-bold text-gray-700">Lorem Ipsum</span>
         <p class="text-xs text-gray-700">ID: 23432252</p>
       </div>
     </div>
-    <button class="hover:bg-[rgb(60,168,159)] text-gray-50 bg-[#10b9aa] py-2 rounded-md">Lihat Detail</button>
   </div>
+
+  <button class="absolute bottom-3 left-3 right-3 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 text-gray-50 bg-[#10b9aa] py-2 rounded-md z-10">
+    Lihat Detail
+  </button>
 </div>
