@@ -18,7 +18,7 @@
         
         <section class="bg-white">
             <div class=" lg:min-h-screen ">
-                <main  class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6 mt-12">
+                <main  class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6 ">
                     {{ $slot }}
                 </main>
             </div>

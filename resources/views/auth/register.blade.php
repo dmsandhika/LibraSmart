@@ -83,6 +83,8 @@
               >
               Buat Akun
             </button>
+            <x-google></x-google>
+
 
             <p class="mt-4 text-sm text-gray-500 sm:mt-0">
               Sudah Punya Akun?

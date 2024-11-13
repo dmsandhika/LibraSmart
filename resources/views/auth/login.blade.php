@@ -57,6 +57,7 @@
                           >
                           Masuk
                         </button>
+                        <x-google></x-google>
                         <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                           Belum Punya Akun?
                           <a href="{{ route('register') }}" class="text-gray-700 underline">Daftar</a>.
