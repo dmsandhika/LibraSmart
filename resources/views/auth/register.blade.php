@@ -58,11 +58,11 @@
                   class="absolute inset-y-0 right-3 flex items-center mt-4 cursor-pointer icon-[mdi--eye]"
                   onclick="togglePasswordVisibility()"
                 ></span>
+                @error('password')
+                      <span class="text-red-500 text-sm">{{ $message }}</span>
+                  @enderror
               </div>
               
-              @error('password')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                @enderror
             </div> 
           <div class="col-span-6">
             <label for="PasswordConfirmation" class="block text-sm font-medium text-gray-700">
@@ -80,10 +80,10 @@
               class="absolute inset-y-0 right-3 flex items-center mt-4 cursor-pointer icon-[mdi--eye]"
               onclick="togglePasswordVisibility2()"
               ></span>
+              @error('password_confirmation')
+              <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
             </div>
-            @error('password_confirmation')
-            <span class="text-red-500 text-sm">{{ $message }}</span>
-          @enderror
           </div>
 
 

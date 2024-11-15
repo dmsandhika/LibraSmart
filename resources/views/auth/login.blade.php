@@ -33,10 +33,10 @@
                           name="email"
                           class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" required
                         /> 
+                        @error('email')
+                              <span class="text-red-500 text-sm">{{ $message }}</span>
+                          @enderror
                       </div>
-                      @error('email')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
                       <div class="col-span-6 ">
                         <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
             
@@ -51,11 +51,11 @@
                             class="absolute inset-y-0 right-3 flex items-center mt-4 cursor-pointer icon-[mdi--eye]"
                             onclick="togglePasswordVisibility()"
                           ></span>
+                          @error('password')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                         
-                        @error('password')
-                              <span class="text-red-500 text-sm">{{ $message }}</span>
-                          @enderror
                       </div> 
                       <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
                           <button
