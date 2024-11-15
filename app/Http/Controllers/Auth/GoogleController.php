@@ -40,8 +40,10 @@ class GoogleController extends Controller
 
         // Login user
         Auth::login($user);
+        if (Auth::user()->role_id == 1) {
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
 
-        // Redirect ke dashboard atau halaman yang diinginkan
-        return redirect()->intended('dashboard');
+        return redirect()->intended(route('home', absolute: false));
     }
 }

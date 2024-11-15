@@ -11,21 +11,45 @@
       <div class="md:flex md:items-center md:gap-12">
         <nav aria-label="Global" class="hidden md:block">
           <ul class="flex place-items-center gap-6 text-sm">
+            <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">Home</a></li>
+            <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">Collection</a></li>
             <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">About</a></li>
-            <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">Careers</a></li>
-            <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">History</a></li>
             <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">Services</a></li>
             <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">Projects</a></li>
           </ul>
         </nav>
 
         <div class="flex items-center gap-4">
+          @if (Auth::check())
+          <div class="relative" data-twe-dropdown-ref>
+            <a class="rounded-md text-teal-600 border-teal-600 border-2 px-5 py-2.5 hover:bg-teal-600 hover:text-white " type="button"
+            id="dropdownMenuButton2"
+            data-twe-dropdown-toggle-ref>{{ Auth::user()->name }}</a>
+            <ul
+        class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-base shadow-lg data-[twe-dropdown-show]:block k"
+        aria-labelledby="dropdownMenuButton2"
+        data-twe-dropdown-menu-ref>
+        <li>
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button
+              class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline"
+              href={{ route('logout') }}
+              data-twe-dropdown-item-ref
+              >Logout</button
+            >
+          </form>
+        </li>
+      </ul>
+          </div>
+          @else
           <div class="sm:flex sm:gap-4">
             <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="{{ route('login') }}">Login</a>
             <div class="hidden sm:flex">
               <a class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600" href="{{ route('register') }}">Register</a>
             </div>
           </div>
+          @endif
 
           <div class="block md:hidden">
             <button id="mobile-menu-button" class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">

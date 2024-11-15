@@ -40,12 +40,19 @@
                       <div class="col-span-6 ">
                         <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
             
-                        <input
-                          type="password"
-                          id="Password"
-                          name="password"
-                          class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                        />
+                        <div class="relative">
+                          <input
+                            type="password"
+                            id="Password"
+                            name="password"
+                            class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm pr-10"
+                          />
+                          <span
+                            class="absolute inset-y-0 right-3 flex items-center mt-4 cursor-pointer icon-[mdi--eye]"
+                            onclick="togglePasswordVisibility()"
+                          ></span>
+                        </div>
+                        
                         @error('password')
                               <span class="text-red-500 text-sm">{{ $message }}</span>
                           @enderror
@@ -70,11 +77,16 @@
                         </a>
                     </div>
                    
-      
+      <script>
+        const togglePasswordVisibility = () => {
+  const passwordInput = document.getElementById('Password');
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordInput.setAttribute('type', type);
+}
+      </script>
                       
                     </form>
                   </div>
   
-            
-
+       
 </x-guest-layout>

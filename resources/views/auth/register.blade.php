@@ -44,30 +44,43 @@
           @error('email')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
-          <div class="col-span-6 sm:col-span-3">
-            <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
-
-            <input
-              type="password"
-              id="Password"
-              name="password"
-              class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-            />
-            @error('password')
-                  <span class="text-red-500 text-sm">{{ $message }}</span>
-              @enderror
-          </div>
-          <div class="col-span-6 sm:col-span-3">
+            <div class="col-span-6 ">
+              <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
+  
+              <div class="relative">
+                <input
+                  type="password"
+                  id="Password"
+                  name="password"
+                  class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm pr-10"
+                />
+                <span
+                  class="absolute inset-y-0 right-3 flex items-center mt-4 cursor-pointer icon-[mdi--eye]"
+                  onclick="togglePasswordVisibility()"
+                ></span>
+              </div>
+              
+              @error('password')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div> 
+          <div class="col-span-6">
             <label for="PasswordConfirmation" class="block text-sm font-medium text-gray-700">
               Password Confirmation
             </label>
+            <div class="relative">
 
-            <input
+              <input
               type="password"
               id="PasswordConfirmation"
               name="password_confirmation"
               class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-            />
+              />
+              <span
+              class="absolute inset-y-0 right-3 flex items-center mt-4 cursor-pointer icon-[mdi--eye]"
+              onclick="togglePasswordVisibility2()"
+              ></span>
+            </div>
             @error('password_confirmation')
             <span class="text-red-500 text-sm">{{ $message }}</span>
           @enderror
@@ -93,5 +106,17 @@
           </div>
         </form>
       </div>
+      <script>
+        const togglePasswordVisibility = () => {
+          const passwordInput = document.getElementById('Password');
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+        }
 
+        const togglePasswordVisibility2 = () => {
+          const passwordInput = document.getElementById('PasswordConfirmation');
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+        }
+      </script>
 </x-guest-layout>

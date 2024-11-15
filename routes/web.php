@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/dashboard', [ProfileController::class, 'showDashboard'])
-->middleware(['auth', 'verified'])->name('dashboard');
+->middleware(['auth', 'verified', 'role:admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -17,5 +17,5 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('admin', function(){
     return '<h1>halo admin</h1>';
-})->middleware(['auth', 'verified', 'role:admin']);
+})->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';

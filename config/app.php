@@ -123,7 +123,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
     'provider' => [
-    Spatie\Permission\PermissionServiceProvider::class,
+    Spatie\Permission\PermissionServiceProvider::class
+    
     ]
 
 ];
