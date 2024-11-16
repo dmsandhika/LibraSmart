@@ -7,8 +7,8 @@ window.Alpine = Alpine;
 Alpine.start();
 
 import { Tooltip, initTWE ,Collapse, Dropdown,
-  Ripple, } from "tw-elements";
+  Ripple, Input, } from "tw-elements";
 initTWE({ Collapse });
-initTWE({ Tooltip });
+initTWE({ Tooltip, Input });
 
 initTWE({ Dropdown, Ripple });

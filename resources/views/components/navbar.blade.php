@@ -17,7 +17,7 @@
             @if (Auth::check())
             <x-nav-link href="/pinjam" :active="request()-> is('/pinjam')">Pinjam</x-nav-link>
             @endif
-            <x-nav-link href="/pinjam" :active="request()-> is('/pinjam')">Kontak</x-nav-link>
+            <x-nav-link href="/kontak" :active="request()-> is('kontak')">Kontak</x-nav-link>
           </ul>
         </nav>
 

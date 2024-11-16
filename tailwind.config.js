@@ -24,5 +24,6 @@ export default {
         forms,
         require("tw-elements/plugin.cjs"),
         addDynamicIconSelectors(),
+        require('@tailwindcss/forms'),
     ],
 };

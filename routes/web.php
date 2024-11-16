@@ -12,6 +12,9 @@ Route::get('/search', function () {
 Route::get('/koleksi', function () {
     return view('user.collection');
 })->name('collectionBook');
+Route::get('/kontak', function () {
+    return view('user.contact');
+})->name('contact');
 
 Route::get('/dashboard', [ProfileController::class, 'showDashboard'])
 ->middleware(['auth', 'verified', 'role:admin'])->name('dashboard');
