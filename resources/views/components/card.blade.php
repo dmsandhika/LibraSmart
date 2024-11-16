@@ -10,6 +10,9 @@
         <span class="text-xl font-bold text-gray-700">Lorem Ipsum</span>
         <p class="text-xs text-gray-700">Dimas Andhika Firmansyah</p>
         <p class="text-xs text-gray-700">ID: 23432252</p>
+        <div class="flex flex-row gap-2">
+          <img class="w-5" src="https://img.icons8.com/?size=100&id=qdQpy48X3Rjv&format=png&color=000000" alt="">5/5
+        </div>
       </div>
     </div>
   </div>
