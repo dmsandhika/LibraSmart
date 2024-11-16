@@ -9,6 +9,9 @@ Route::get('/', function () {
 Route::get('/search', function () {
     return view('user.search');
 })->name('searchBook');
+Route::get('/koleksi', function () {
+    return view('user.collection');
+})->name('collectionBook');
 
 Route::get('/dashboard', [ProfileController::class, 'showDashboard'])
 ->middleware(['auth', 'verified', 'role:admin'])->name('dashboard');

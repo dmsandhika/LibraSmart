@@ -15,7 +15,7 @@
     </head>
     <body class="font-sans antialiased  ">
        <x-navbar></x-navbar>
-       <div class="pt-24 ">
+       <div class="pt-24  bg-[#f3f4f6]">
            {{ $slot }}
        </div>
        <x-footer></x-footer>

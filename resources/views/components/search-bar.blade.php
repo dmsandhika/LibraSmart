@@ -1,4 +1,4 @@
-<div class="flex w-1/2 mt-10 fixed bg-transparent z-50" style="left:25%" id="input">
+<div class="flex w-1/2 mt-10 relative bg-transparent" style="left:25%" id="input">
     <input value="" placeholder="Masukkan Judul/ISBN/Penulis"
         class="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-[8px] border border-slate-200 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
         id="floating_outlined" type="text" />
@@ -17,7 +17,7 @@
         </svg>
     </div>
     <div
-        class="border border-teal-200 ml-10 pt-1 relative group rounded-lg w-64  bg-gray-50 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0 before:bg-violet-500 before:rounded-full before:blur-lg before:[box-shadow:-60px_20px_10px_10px_#10baab]">
+        class="border border-teal-200 ml-10 pt-1 relative group rounded-lg w-64  bg-gray-50 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0 before:bg-teal-500 before:rounded-full before:blur-lg ">
 
         <select
             class="appearance-none  hover:placeholder-shown:bg-emerald-500 relative border-none text-teal-600 bg-transparent placeholder-violet-700 text-sm font-bold rounded-lg block w-full p-2.5 focus:outline-none focus:ring-0">

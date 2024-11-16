@@ -13,6 +13,7 @@
           <ul class="flex place-items-center gap-6 text-sm">
             <x-nav-link href="/" :active="request()-> is('/')">Beranda</x-nav-link>
             <x-nav-link href="/search" :active="request()-> is('search')">Cari</x-nav-link>
+            <x-nav-link href="/koleksi" :active="request()-> is('/koleksi')">Koleksi</x-nav-link>
             <x-nav-link href="/pinjam" :active="request()-> is('/pinjam')">Pinjam</x-nav-link>
           </ul>
         </nav>
