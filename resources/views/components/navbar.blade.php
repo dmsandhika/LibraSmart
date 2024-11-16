@@ -11,11 +11,9 @@
       <div class="md:flex md:items-center md:gap-12">
         <nav aria-label="Global" class="hidden md:block">
           <ul class="flex place-items-center gap-6 text-sm">
-            <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">Home</a></li>
-            <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">Collection</a></li>
-            <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">About</a></li>
-            <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">Services</a></li>
-            <li class="w-full"><a class="text-gray-500 transition hover:text-teal-600 hover:bg-gray-300 rounded-md w-full text-center px-5 py-2.5" href="#">Projects</a></li>
+            <x-nav-link href="/" :active="request()-> is('/')">Beranda</x-nav-link>
+            <x-nav-link href="/search" :active="request()-> is('search')">Cari</x-nav-link>
+            <x-nav-link href="/pinjam" :active="request()-> is('/pinjam')">Pinjam</x-nav-link>
           </ul>
         </nav>
 

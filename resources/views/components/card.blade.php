@@ -1,6 +1,6 @@
-<div class="w-60 h-80 bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl relative overflow-hidden group ">
+<div class="w-60 h-80 mb-10 bg-gray-50 p-3 flex flex-col gap-2 rounded-xl relative overflow-hidden group ">
   
-  <div class="absolute inset-0 bg-gray-700 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:h-full group-hover:rounded-none">
+  <div class="absolute inset-0 bg-gray-700 rounded-xl overflow-hidden transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:h-full group-hover:rounded-none">
     <img src="https://picsum.photos/200/300" alt="" class="w-full h-full object-cover" />
   </div>
   
@@ -8,6 +8,7 @@
     <div class="flex flex-row justify-between">
       <div class="flex flex-col">
         <span class="text-xl font-bold text-gray-700">Lorem Ipsum</span>
+        <p class="text-xs text-gray-700">Dimas Andhika Firmansyah</p>
         <p class="text-xs text-gray-700">ID: 23432252</p>
       </div>
     </div>
