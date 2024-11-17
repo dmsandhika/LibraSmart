@@ -35,6 +35,11 @@
         <li>
           <a href="" class="text-center block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline"">Profil</a>
         </li>
+        @if (Auth::user()->hasRole('admin'))
+        <li>
+          <a href="/dashboard" class="text-center block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline">Dashboard</a>
+        </li>
+        @endif
         <li>
           <a href="" class="text-center block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline">Daftar Peminjaman</a>
         </li>

@@ -68,6 +68,6 @@ class ProfileController extends Controller implements HasMiddleware
     }
 
     public function showDashboard(){
-        return view('dashboard');
+        return view('admin.dashboard');
     }
 }
