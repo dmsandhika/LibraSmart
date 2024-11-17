@@ -39,7 +39,7 @@
                 <!-- Link -->
                 <x-nav-link-admin href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link-admin>
                 <x-nav-link-admin href="/reports" :active="request()->is('reports')">Reports</x-nav-link-admin>
-                <x-nav-link-admin href="/data" :active="request()->is('data')">Data</x-nav-link-admin>
+                <x-nav-link-admin href="/data/user" :active="request()->is('data/*')">Data</x-nav-link-admin>
 
                 <!-- Dropdown link -->
                 <li class="mb-4 ps-2 mr-10 lg:mb-0 lg:pe-1 lg:ps-0" data-twe-nav-item-ref data-twe-dropdown-ref>

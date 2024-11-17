@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('description')->nullable();
             $table->integer('stock')->default(0);
+            $table->enum('status', ['Tersedia', 'Tidak Tersedia'])->default('active');
             $table->timestamps();
             
             $table->foreign('category_id')->references('id')->on('category');
