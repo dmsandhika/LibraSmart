@@ -13,6 +13,7 @@
                             <x-input name="name" type="text" placeholder="Masukkan Nama">Nama</x-input>
                             <x-input name="email" type="email" placeholder="Masukkan Email">Email</x-input>
                             <x-input name="password" type="password" placeholder="Masukkan Password">Password</x-input>
+                            
 
                         </form>
                     </x-modal>

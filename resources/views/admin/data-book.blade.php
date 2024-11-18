@@ -8,13 +8,51 @@
               <div class="flex justify-between">
 
                   <x-search-data></x-search-data>
-                  <x-modal button="Tambah User" title="Tambah User Baru">
-                      <form action="">
-                          <x-input name="name" type="text" placeholder="Masukkan Nama">Nama</x-input>
-                          <x-input name="email" type="email" placeholder="Masukkan Email">Email</x-input>
-                          <x-input name="password" type="password" placeholder="Masukkan Password">Password</x-input>
-
-                      </form>
+                  <x-modal button="Tambah Buku" title="Tambah Buku Baru" >
+                    <form action="" class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <!-- Input Judul -->
+                      <x-input name="title" type="text" placeholder="Masukkan Judul">Judul</x-input>
+                    
+                      <!-- Input Penulis -->
+                      <x-input name="author" type="text" placeholder="Masukkan Nama Penulis">Penulis</x-input>
+                    
+                      <!-- Input ISBN -->
+                      <x-input name="isbn" type="text" placeholder="Masukkan ISBN">ISBN</x-input>
+                    
+                      <!-- Pilihan Kategori -->
+                      <div>
+                        <label for="category_id" class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
+                        <select class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2" name="category_id" id="category_id">
+                          <option value="">Pilih Kategori</option>
+                          @foreach ($category as $c)
+                          <option value="{{ $c->id }}">{{ $c->name }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    
+                      <!-- Input Stok -->
+                      <x-input name="stock" type="number" placeholder="Masukkan Stok">Stok</x-input>
+                    
+                      <!-- Pilihan Status -->
+                      <div>
+                        <label for="status" class="block text-sm font-medium text-gray-700 mb-2">Status Buku</label>
+                        <select class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2" name="status" id="status">
+                          @foreach ($status as $s)
+                          <option value="{{ $s }}">{{ $s }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    
+                      <!-- Input Deskripsi -->
+                      <div class="md:col-span-2">
+                        <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
+                        <textarea class="form-inpu peer w-full p-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-gray-500 focus:border-teal-700" name="description" id="description"></textarea>
+                      </div>
+                    
+                      <!-- Input Cover -->
+                      <x-input name="cover" type="file" placeholder="Masukkan Cover">Gambar Cover</x-input>
+                    </form>
+                    
                   </x-modal>
               </div>
 

@@ -10,10 +10,10 @@
 
 
 <div data-twe-modal-init
-  class="fixed left-0 top-0 mt-20 z-[1055] hidden h-full w-full  items-center justify-center overflow-t-20 overflow-x-hidden outline-none"
+  class="fixed left-0 top-0  z-[1055]  max-h-screen hidden h-full w-full  items-center justify-center overflow-t-20 overflow-x-hidden outline-none" {{ $attributes }}
   id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div data-twe-modal-dialog-ref
-    class="pointer-events-none relative w-auto translate-y-0 opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:max-w-[500px]">
+    class="pointer-events-none relative w-auto translate-y-0 opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:max-w-[1000px]">
 
       <div
           class="pointer-events-auto relative flex w-full flex-col pt-5 rounded-xl border-none bg-slate-300 bg-clip-padding text-current shadow-4 outline-none">
