@@ -22,9 +22,10 @@
                     <table class="table-auto w-full rounded-lg border-separate border-spacing-0">
                         <thead class="text-center">
                             <tr>
-                                <th class="border border-slate-500 p-3 rounded-tl-lg">Id</th>
+                                <th class="border border-slate-500 p-3 rounded-tl-lg">No</th>
                                 <th class="border border-slate-500 p-3">Nama</th>
                                 <th class="border border-slate-500 p-3">Email</th>
+                                <th class="border border-slate-500 p-3">Role</th>
                                 <th class="border border-slate-500 p-3">Google</th>
                                 <th class="border border-slate-500 p-3">Dibuat Pada</th>
                                 <th class="border border-slate-500 py-3 rounded-tr-lg">Aksi</th>
@@ -37,6 +38,7 @@
                                     <td class="border border-slate-400 p-3 text-center">{{ $no++ }}</td>
                                     <td class="border border-slate-400 p-3">{{ $d->name }}</td>
                                     <td class="border border-slate-400 p-3">{{ $d->email }}</td>
+                                    <td class="border border-slate-400 p-3">{{ $d->getRoleNames()[0] }}</td>
                                     <td class="border border-slate-400 p-3 text-center">
                                         @if ($d->google_id == null)
                                         <span

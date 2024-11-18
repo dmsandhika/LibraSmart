@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 
@@ -25,7 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/data/user', [UserController::class, 'index'])->name('data');
+    Route::get('/data/user', [UserController::class, 'index'])->name('data-user');
+    Route::get('/data/books', [BookController::class, 'index']);
+
 });
 Route::get('admin', function(){
     return '<h1>halo admin</h1>';

@@ -17,6 +17,7 @@ class Book extends Model
         'category_id',
         'stock',
         'description',
+        'status'
     ];
 
     public function category(){
