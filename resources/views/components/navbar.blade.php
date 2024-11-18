@@ -14,7 +14,7 @@
             <x-nav-link href="/" :active="request()-> is('/')">Beranda</x-nav-link>
             <x-nav-link href="/search" :active="request()-> is('search')">Cari</x-nav-link>
             <x-nav-link href="/koleksi" :active="request()-> is('koleksi')">Koleksi</x-nav-link>
-            @if (Auth::check())
+            @if (Auth::user()->hasRole('member'))
             <x-nav-link href="/pinjam" :active="request()-> is('/pinjam')">Pinjam</x-nav-link>
             @endif
             <x-nav-link href="/kontak" :active="request()-> is('kontak')">Kontak</x-nav-link>
@@ -22,7 +22,7 @@
         </nav>
 
         <div class="flex items-center gap-4">
-          @if (Auth::check())
+          @if (Auth::user())
           <div class="relative" data-twe-dropdown-ref>
             <a class="rounded-md text-teal-600 border-teal-600 border-2 px-5 py-2.5 hover:bg-teal-600 hover:text-white " type="button"
             id="dropdownMenuButton2"
@@ -31,18 +31,19 @@
         class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-base shadow-lg data-[twe-dropdown-show]:block k"
         aria-labelledby="dropdownMenuButton2"
         data-twe-dropdown-menu-ref>
-       
-        <li>
-          <a href="" class="text-center block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline"">Profil</a>
-        </li>
+    
         @if (Auth::user()->hasRole('admin'))
         <li>
           <a href="/dashboard" class="text-center block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline">Dashboard</a>
         </li>
-        @endif
+        @else
+        <li>
+          <a href="" class="text-center block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline"">Profil</a>
+        </li>
         <li>
           <a href="" class="text-center block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline">Daftar Peminjaman</a>
         </li>
+        @endif
         <li>
           <form action="{{ route('logout') }}" method="POST">
             @csrf
