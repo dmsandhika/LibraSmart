@@ -8,6 +8,18 @@
                 <div class="flex justify-between">
 
                     <x-search-data></x-search-data>
+                    <div
+                        class="border border-teal-200 ml-10 pt-1 relative group rounded-lg w-64  bg-gray-50 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0 before:bg-teal-500 before:rounded-full before:blur-lg ">
+
+                        <select id="category-select"
+                            class="appearance-none  hover:placeholder-shown:bg-emerald-500 relative border-none text-teal-600 bg-transparent placeholder-violet-700 text-sm font-bold rounded-lg block w-full p-2.5 focus:outline-none focus:ring-0">
+                            <option>Pilih Kategori</option>
+                            @foreach ($category as $c)
+                                <option value="{{ $c->id }}">{{ $c->name }}</option>
+                            @endforeach
+                        </select>
+
+                    </div>
                     <x-modal button="Tambah Buku" title="Tambah Buku Baru">
                         <form action="" class="grid grid-cols-1 gap-6 md:grid-cols-2">
                             <x-input name="title" type="text" placeholder="Masukkan Judul">Judul</x-input>
@@ -95,7 +107,7 @@
                                 <th class="border border-slate-500 py-3 rounded-tr-lg">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="text-left">
+                        <tbody class="text-left" id="book-table-body">
 
                             @foreach ($books as $b)
                                 <tr>
@@ -159,8 +171,66 @@
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
         }
-    </script>
-    <script>
+
+        document.getElementById('category-select').addEventListener('change', function() {
+            const categoryId = this.value;
+            const tableBody = document.getElementById('book-table-body');
+
+            if (categoryId) {
+                fetch(`/books/${categoryId}`)
+                    .then(response => response.json())
+                    .then(books => {
+                        tableBody.innerHTML = '';
+
+                        if (books.length > 0) {
+                            books.forEach((book, index) => {
+                                const row = document.createElement('tr');
+
+                                row.innerHTML = `
+                                <td class="border border-slate-500 p-3">${index + 1}</td>
+                                <td class="border border-slate-500 p-3">${book.title}</td>
+                                <td class="border border-slate-500 p-3">${book.isbn}</td>
+                                <td class="border border-slate-500 p-3">${book.stock}</td>
+                                <td class="border border-slate-500 p-3">
+                                    ${book.status === 'Tersedia' ? '<span class="text-green-600">Tersedia</span>' : book.status === 'Tidak Tersedia' ? '<span class="text-red-600">Tidak Tersedia</span>' : '<span class="text-yellow-600">Coming Soon</span>'}
+                                </td>
+                                <td class="border border-slate-500 p-3">
+                                   ${book.category.name}
+                                  </td>
+                                <td class="border border-slate-400 text-center">
+                                    <span class="icon-[basil--edit-outline] m-2 hover:text-[#07c482]" style="width: 24px; height: 24px;"></span>
+                                    <span class="icon-[majesticons--eye-line] m-2 hover:text-[#1100ff]" style="width: 24px; height: 24px;"></span>
+                                    <span class="icon-[tabler--trash] m-2 hover:text-[#ff0000]" style="width: 24px; height: 24px;"></span>
+                                </td>
+                            `;
+
+                                tableBody.appendChild(row);
+                            });
+                        } else {
+                            tableBody.innerHTML = `
+                            <tr>
+                                <td colspan="7" class="text-center p-3 text-red-500">Tidak ada buku untuk kategori ini.</td>
+                            </tr>
+                        `;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching books:', error);
+                        tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="7" class="text-center p-3 text-red-500">Gagal memuat data buku.</td>
+                        </tr>
+                    `;
+                    });
+            } else {
+                tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center p-3 text-gray-500">Silakan pilih kategori.</td>
+                </tr>
+            `;
+            }
+        });
+
         function updateDropzoneText() {
             const fileInput = document.getElementById('dropzone-file');
             const dropzoneText = document.getElementById('dropzone-text');

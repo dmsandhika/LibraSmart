@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/data/user', [UserController::class, 'index'])->name('data-user');
     Route::get('/data/books', [BookController::class, 'index']);
+    Route::get('/books/{category}', [BookController::class, 'getBooksByCategory']);
+
 
 });
 Route::get('admin', function(){

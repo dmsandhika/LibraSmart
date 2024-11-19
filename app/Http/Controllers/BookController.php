@@ -16,4 +16,13 @@ class BookController extends Controller
         $no=1;
         return view('admin.data-book', compact('books', 'no', 'category', 'status'));
     }
+
+    public function getBooksByCategory($category)
+    {
+        $books = Book::where('category_id', $category)
+        ->with('category')  
+        ->get();
+        return response()->json($books);
+    }
+
 }
