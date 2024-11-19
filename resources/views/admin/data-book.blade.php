@@ -231,6 +231,57 @@
             }
         });
 
+        document.getElementById('search-data').addEventListener('change', function(){
+          const searchValue = this.value.toLowerCase();
+          const tableBody = document.getElementById('book-table-body');
+
+          if(searchValue){
+            fetch(`/booksSearch/${searchValue}`)
+            .then(response => response.json())
+            .then(books => {
+                        tableBody.innerHTML = '';
+
+                        if (books.length > 0) {
+                            books.forEach((book, index) => {
+                                const row = document.createElement('tr');
+
+                                row.innerHTML = `
+                                <td class="border border-slate-500 p-3">${index + 1}</td>
+                                <td class="border border-slate-500 p-3">${book.title}</td>
+                                <td class="border border-slate-500 p-3">${book.isbn}</td>
+                                <td class="border border-slate-500 p-3">${book.stock}</td>
+                                <td class="border border-slate-500 p-3">
+                                    ${book.status === 'Tersedia' ? '<span class="text-green-600">Tersedia</span>' : book.status === 'Tidak Tersedia' ? '<span class="text-red-600">Tidak Tersedia</span>' : '<span class="text-yellow-600">Coming Soon</span>'}
+                                </td>
+                                <td class="border border-slate-500 p-3">
+                                   ${book.category.name}
+                                  </td>
+                                <td class="border border-slate-400 text-center">
+                                    <span class="icon-[basil--edit-outline] m-2 hover:text-[#07c482]" style="width: 24px; height: 24px;"></span>
+                                    <span class="icon-[majesticons--eye-line] m-2 hover:text-[#1100ff]" style="width: 24px; height: 24px;"></span>
+                                    <span class="icon-[tabler--trash] m-2 hover:text-[#ff0000]" style="width: 24px; height: 24px;"></span>
+                                </td>
+                            `;
+
+                                tableBody.appendChild(row);
+                            });
+                        } else {
+                            tableBody.innerHTML = `
+                            <tr>
+                                <td colspan="7" class="text-center p-3 text-red-500">Tidak ada buku untuk kategori ini.</td>
+                            </tr>
+                        `;
+                        }
+                    })
+                    
+            } else {
+                tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center p-3 text-gray-500">Data tidak ada</td>
+                </tr>
+            `;
+            }
+        })
         function updateDropzoneText() {
             const fileInput = document.getElementById('dropzone-file');
             const dropzoneText = document.getElementById('dropzone-text');

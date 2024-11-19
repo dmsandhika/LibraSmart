@@ -25,4 +25,13 @@ class BookController extends Controller
         return response()->json($books);
     }
 
+    public function searchBooks($keyword) {
+        $books = Book::with('category')
+            ->where('title', 'LIKE', "%{$keyword}%")
+            ->orWhere('isbn', 'LIKE', "%{$keyword}%")
+            ->get();
+    
+        return response()->json($books);
+    }
+
 }

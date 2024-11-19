@@ -1,4 +1,4 @@
-<input value="" placeholder="Cari"
+<input value="" placeholder="Cari" id="search-data"
         class="block text-sm h-[50px] px-4 mx-10 w-1/2 text-slate-900 bg-white rounded-[8px] border border-slate-600 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
         id="floating_outlined" type="text" />
     <label
