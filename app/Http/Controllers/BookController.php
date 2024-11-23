@@ -8,30 +8,25 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $query = Book::with('category');
+
+        if ($request->filled('search')) {
+            $query->where('title', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('isbn', 'LIKE', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
         $status = ['Tersedia', 'Tidak Tersedia', 'Coming Soon'];
-        $books = Book::all();
-        $category = Category::all();
+        $books = $query->paginate(10);
+        $categories = Category::all();
         $no=1;
-        return view('admin.data-book', compact('books', 'no', 'category', 'status'));
+        return view('admin.data-book', compact('books', 'no', 'categories', 'status'));
     }
 
-    public function getBooksByCategory($category)
-    {
-        $books = Book::where('category_id', $category)
-        ->with('category')  
-        ->get();
-        return response()->json($books);
-    }
-
-    public function searchBooks($keyword) {
-        $books = Book::with('category')
-            ->where('title', 'LIKE', "%{$keyword}%")
-            ->orWhere('isbn', 'LIKE', "%{$keyword}%")
-            ->get();
     
-        return response()->json($books);
-    }
 
 }

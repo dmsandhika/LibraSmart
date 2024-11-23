@@ -27,9 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/data/user', [UserController::class, 'index'])->name('data-user');
-    Route::get('/data/books', [BookController::class, 'index']);
-    Route::get('/books/{category}', [BookController::class, 'getBooksByCategory']);
-    Route::get('booksSearch/{keyword}', [BookController::class, 'searchBooks']);
+    Route::get('/data/books', [BookController::class, 'index'])->name('book.index');
 
 
 });
