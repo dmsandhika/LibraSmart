@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -59,6 +61,30 @@ class BookController extends Controller
         return redirect()->route('book.index')->with('success', 'Data Buku Berhasil Ditambahkan');
     }
 
-    
+    public function delete($id)
+    {
+        $book = Book::findOrFail($id);
+
+        // Hapus file cover
+        if ($book->cover) {
+            Storage::disk('public')->delete($book->cover);
+        }
+
+        // Hapus data dari database
+        $book->delete();
+
+        return response()->json(['success' => 'Data Buku Berhasil Dihapus']);
+    }
+
+    public function detail($id){
+        $book = Book::find($id);
+        return view('admin.detail-book', compact('book'));
+    }
+
+    public function edit($id){
+        $book = Book::find($id);
+        return view('admin.edit-book', compact('book'));
+    }
+
 
 }

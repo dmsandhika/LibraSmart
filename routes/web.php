@@ -29,8 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/data/user', [UserController::class, 'index'])->name('data-user');
     Route::get('/data/books', [BookController::class, 'index'])->name('book.index');
 
-    Route::prefix('book')->group(function () {
+    Route::prefix('data/book')->group(function () {
         Route::post('/create', [BookController::class, 'create'])->name('book.create');
+        Route::get('/{id}', [BookController::class, 'detail'])->name('book.detail');
+        Route::delete('/{id}', [BookController::class, 'delete'])->name('book.delete');
+        Route::get('/edit/{id}', [BookController::class, 'edit'])->name('book.edit');
+
     });
 
 

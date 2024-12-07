@@ -121,7 +121,7 @@
 
                         </form>
                        
-                        
+      
                     </x-modal>
                 </div>
 
@@ -158,14 +158,24 @@
                                             @endif
                                         </td>
                                         <td class="border border-slate-500 p-3">{{ $b->category->name }}</td>
-                                        <td class="border border-slate-400  text-center">
-                                            <span class="icon-[basil--edit-outline] m-2 hover:text-[#07c482]"
-                                                style="width: 24px; height: 24px; "></span>
-                                            <span class="icon-[majesticons--eye-line] m-2 hover:text-[#1100ff]"
-                                                style="width: 24px; height: 24px; "></span>
-                                            <span class="icon-[tabler--trash] m-2 hover:text-[#ff0000]"
-                                                style="width: 24px; height: 24px;"></span>
+                                        <td class="border border-slate-400 text-center py-auto">
+                                            <div class="flex justify-center items-center h-full gap-2">
+                                                <a href="{{ route('book.edit', $b->id) }}" class="bg-gray-300 rounded-xl p-1 flex items-center h-full hover:bg-green-300 " >
+                                                    <span class="icon-[basil--edit-outline] hover:text-[#0b724e]"
+                                                        style="width: 24px; height: 24px;"></span>
+                                                </a>
+                                                <a href="{{ route('book.detail', $b->id) }}" class="bg-gray-300 rounded-xl p-1 flex items-center h-full hover:bg-blue-300 ">
+                                                    <span class="icon-[majesticons--eye-line] hover:text-[#1100ff]"
+                                                        style="width: 24px; height: 24px;"></span>
+                                                </a>
+                                                <button class="bg-gray-300 rounded-xl p-1 flex items-center h-full hover:bg-red-300  btn-delete" data-url="{{ route('book.delete', $b->id) }}">
+                                                    <span class="icon-[tabler--trash] hover:text-[#ff0000]"
+                                                        style="width: 24px; height: 24px;"></span>
+                                                </button>
+                                            </div>
                                         </td>
+                                        
+                                        
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -253,5 +263,56 @@
             `;
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const url = this.getAttribute('data-url');
+
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Kirim permintaan DELETE menggunakan fetch
+                    fetch(url, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire(
+                                'Terhapus!',
+                                data.success,
+                                'success'
+                            );
+                            // Refresh halaman atau hapus elemen dari DOM
+                            setTimeout(() => location.reload(), 2000);
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire(
+                            'Error!',
+                            'Terjadi kesalahan saat menghapus data.',
+                            'error'
+                        );
+                    });
+                }
+            });
+        });
+    });
+});
+
     </script>
 </x-app-layout>

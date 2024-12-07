@@ -26,8 +26,10 @@
                           Dashboard
                       @elseif (request()->is('reports'))
                           Reports
-                      @elseif (request()->is('data/*'))
-                          Manajemen Data
+                      @elseif (request()->is('data/book*'))
+                          Manajemen Data Buku
+                      @elseif (request()->is('data/user*'))
+                          Manajemen Data Pengguna
                       @else
                           Welcome
                       @endif
