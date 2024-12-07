@@ -41,19 +41,7 @@
           </div>
 
           <!-- Modal footer -->
-          <div
-              class="flex flex-shrink-0 flex-wrap h-1/2 items-center justify-end rounded-b-md border-t-2 border-neutral-100 p-4">
-              <button type="button"
-                  class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-200 focus:bg-primary-accent-200 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
-                  data-twe-modal-dismiss data-twe-ripple-init data-twe-ripple-color="light">
-                  Tutup
-              </button>
-              <button type="button"
-                  class="ms-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2"
-                  data-twe-ripple-init data-twe-ripple-color="light">
-                  Simpan
-              </button>
-          </div>
+          
       </div>
   </div>
 </div>

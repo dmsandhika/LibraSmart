@@ -1,5 +1,5 @@
 <div
-    class="ml-10 flex w-[100px] flex-col justify-center items-center relative transition-all duration-[450ms] ease-in-out">
+    class="ml-10 flex w-[100px] flex-col  relative transition-all duration-[450ms] ease-in-out">
     <article
         class="w-full ease-in-out duration-500 left-0 rounded-2xl inline-block shadow-lg shadow-black/15 bg-white">
         <x-side-link  href="/data/user" :active="request()->is('data/user')">

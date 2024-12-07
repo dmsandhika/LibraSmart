@@ -29,6 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/data/user', [UserController::class, 'index'])->name('data-user');
     Route::get('/data/books', [BookController::class, 'index'])->name('book.index');
 
+    Route::prefix('book')->group(function () {
+        Route::post('/create', [BookController::class, 'create'])->name('book.create');
+    });
+
 
 });
 Route::get('admin', function(){

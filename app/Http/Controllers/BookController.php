@@ -12,12 +12,17 @@ class BookController extends Controller
     {
         $query = Book::with('category');
 
-        if ($request->filled('search')) {
-            $query->where('title', 'LIKE', '%' . $request->search . '%')
-                ->orWhere('isbn', 'LIKE', '%' . $request->search . '%');
+        if ($request->filled('search') && $request->filled('category_id')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('title', 'LIKE', '%' . $request->search . '%')
+                  ->orWhere('isbn', 'LIKE', '%' . $request->search . '%');
+            })->where('category_id', $request->category_id);
         }
-
-        if ($request->filled('category_id')) {
+        elseif ($request->filled('search')) {
+            $query->where('title', 'LIKE', '%' . $request->search . '%')
+                  ->orWhere('isbn', 'LIKE', '%' . $request->search . '%');
+        }
+        elseif ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
         $status = ['Tersedia', 'Tidak Tersedia', 'Coming Soon'];
@@ -25,6 +30,33 @@ class BookController extends Controller
         $categories = Category::all();
         $no=1;
         return view('admin.data-book', compact('books', 'no', 'categories', 'status'));
+    }
+
+    public function create(Request $request){
+        $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'isbn' => 'required',
+            'category_id' => 'required',
+            'stock' => 'required',
+            'status' => 'required',
+            'description' => 'required',
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $coverPath = $request->file('cover')->store('cover', 'public');
+
+        $book = new Book();
+        $book->title = $request->input('title');
+        $book->author = $request->input('author');
+        $book->isbn = $request->input('isbn');
+        $book->category_id = $request->input('category_id');
+        $book->stock = $request->input('stock');
+        $book->status = $request->input('status');
+        $book->description = $request->input('description');
+        $book->cover = $coverPath; // Simpan path cover
+        $book->save();
+
+        return redirect()->route('book.index')->with('success', 'Data Buku Berhasil Ditambahkan');
     }
 
     

@@ -21,6 +21,7 @@
     "dependencies": {
         "@iconify-json/mdi": "^1.2.1",
         "simple-datatables": "^9.2.1",
+        "sweetalert2": "^11.14.5",
         "tw-elements": "^2.0.0"
     }
 }
