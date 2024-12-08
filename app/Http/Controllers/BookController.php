@@ -83,7 +83,9 @@ class BookController extends Controller
 
     public function edit($id){
         $book = Book::find($id);
-        return view('admin.edit-book', compact('book'));
+        $categories = Category::all();
+        $status = ['Tersedia', 'Tidak Tersedia', 'Coming Soon'];
+        return view('admin.edit-book', compact('book', 'categories', 'status'));
     }
 
 

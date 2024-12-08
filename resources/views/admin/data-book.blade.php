@@ -40,18 +40,18 @@
                     <x-modal button="Tambah Buku" title="Tambah Buku Baru">
                         <form action="{{ route('book.create') }}" method="post" enctype="multipart/form-data" class="grid grid-cols-1 gap-6 md:grid-cols-2">
                             @csrf
-                            <x-input name="title" type="text" placeholder="Masukkan Judul">Judul</x-input>
+                            <x-input name="title" type="text" placeholder="Masukkan Judul" required>Judul</x-input>
 
-                            <x-input name="author" type="text" placeholder="Masukkan Nama Penulis">Penulis</x-input>
+                            <x-input name="author" type="text" placeholder="Masukkan Nama Penulis"  required>Penulis</x-input>
 
-                            <x-input name="isbn" type="text" placeholder="Masukkan ISBN">ISBN</x-input>
+                            <x-input name="isbn" type="text" placeholder="Masukkan ISBN"  required>ISBN</x-input>
 
                             <div>
                                 <label for="category_id"
                                     class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
                                 <select
                                     class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2"
-                                    name="category_id" id="category_id">
+                                    name="category_id" id="category_id" >
                                     <option value="">Pilih Kategori</option>
                                     @foreach ($categories as $c)
                                         <option value="{{ $c->id }}">{{ $c->name }}</option>
@@ -59,7 +59,7 @@
                                 </select>
                             </div>
 
-                            <x-input name="stock" type="number" placeholder="Masukkan Stok">Stok</x-input>
+                            <x-input name="stock" type="number" placeholder="Masukkan Stok" required>Stok</x-input>
 
                             <div>
                                 <label for="status" class="block text-sm font-medium text-gray-700 mb-2">Status
@@ -79,7 +79,7 @@
                                     class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
                                 <textarea
                                     class="form-inpu peer w-full p-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-gray-500 focus:border-teal-700"
-                                    name="description" id="description"></textarea>
+                                    name="description" id="description" required></textarea>
                             </div>
 
 
@@ -101,7 +101,7 @@
                                         <p class="text-xs text-gray-500 ">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                     </div>
                                     <input id="dropzone-file" name="cover" type="file" class="hidden"
-                                        onchange="updateDropzoneText()" />
+                                        onchange="updateDropzoneText()" required />
                                 </label>
                             </div>
 
