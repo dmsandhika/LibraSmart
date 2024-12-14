@@ -13,7 +13,7 @@
                         <div
                             class="border border-teal-200 ml-10 pt-1 relative group rounded-lg w-64  bg-gray-50 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0 before:bg-teal-500 before:rounded-full before:blur-lg ">
 
-                            <select id="category-select" name="category_id"
+                            <select id="category-select" name="category_id" onchange="this.form.submit()"
                                 class="appearance-none  hover:placeholder-shown:bg-emerald-500 relative border-none text-teal-600 bg-transparent placeholder-violet-700 text-sm font-bold rounded-lg block w-full p-2.5 focus:outline-none focus:ring-0">
                                 <option value="">Semua Kategori</option>
                                 @foreach ($categories as $category)
@@ -282,7 +282,6 @@
                 cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Kirim permintaan DELETE menggunakan fetch
                     fetch(url, {
                         method: 'DELETE',
                         headers: {
@@ -297,7 +296,6 @@
                                 data.success,
                                 'success'
                             );
-                            // Refresh halaman atau hapus elemen dari DOM
                             setTimeout(() => location.reload(), 2000);
                         }
                     })

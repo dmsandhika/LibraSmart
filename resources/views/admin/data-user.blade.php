@@ -9,11 +9,32 @@
 
                     <x-search-data></x-search-data>
                     <x-modal button="Tambah User" title="Tambah User Baru">
-                        <form action="">
+                        <form action="{{ route('user.create') }}" method="POST">
+                          @csrf
                             <x-input name="name" type="text" placeholder="Masukkan Nama">Nama</x-input>
                             <x-input name="email" type="email" placeholder="Masukkan Email">Email</x-input>
+                            <div class="mb-4">
+                              <label for="role" class="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                              <select name="role" id="role" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2">
+                                <option value="" disabled selected>Choose Role</option>
+                                <option value="admin" >Admin</option>
+                                <option value="member" >Member</option>
+                              </select>
+                            </div>
                             <x-input name="password" type="password" placeholder="Masukkan Password">Password</x-input>
-                            
+                            <div
+                            class="flex flex-shrink-0 flex-wrap h-1/2 items-center justify-end rounded-b-md  p-4">
+                            <button type="button"
+                                class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-200 focus:bg-primary-accent-200 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                                data-twe-modal-dismiss data-twe-ripple-init data-twe-ripple-color="light">
+                                Tutup
+                            </button>
+                            <button type="submit"
+                                class="ms-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2"
+                                data-twe-ripple-init data-twe-ripple-color="light">
+                                Simpan
+                            </button>
+                        </div>
 
                         </form>
                     </x-modal>
@@ -55,10 +76,18 @@
                                 <td class="border border-slate-400 p-3">{{  $d->created_at->format('d-m-Y') }}</td>
                                     </td>
                                     <td class="border border-slate-400  text-center">
-                                        <span class="icon-[basil--edit-outline] m-2 hover:text-[#07c482]"
-                                            style="width: 24px; height: 24px; "></span>
-                                        <span class="icon-[majesticons--eye-line] m-2 hover:text-[#1100ff]"
-                                            style="width: 24px; height: 24px; "></span>
+                                      <div class="relative group cursor-pointer">
+                                        <span class="icon-[lsicon--switch-filled] hover:text-blue-500" style="width: 24px; height: 24px; "></span>
+                                        <div class="absolute left-0 top-6 px-2 z-10 py-1 bg-black text-white text-xs rounded opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                            Switch Role to 
+                                        @if($d->hasRole('admin'))
+                                            Member
+                                        @else
+                                            Admin
+                                        @endif
+                                        
+                                        </div>
+                                    </div>                                    
                                         <span class="icon-[tabler--trash] m-2 hover:text-[#ff0000]"
                                             style="width: 24px; height: 24px;"></span>
                                     </td>

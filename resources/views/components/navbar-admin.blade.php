@@ -65,8 +65,11 @@
                                 href="/" data-twe-dropdown-item-ref>Go To User Side</a>
                         </li>
                         <li>
-                            <a class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline  "
-                                href="#" data-twe-dropdown-item-ref>Logout</a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                            <button class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline  "
+                              data-twe-dropdown-item-ref>Logout</button>
+                            </form>
                         </li>
 
                     </ul>
