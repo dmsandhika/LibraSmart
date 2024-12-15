@@ -32,10 +32,13 @@ Route::middleware(['auth',  'role:admin'])->group(function () {
         Route::get('/{id}', [BookController::class, 'detail'])->name('book.detail');
         Route::delete('/{id}', [BookController::class, 'delete'])->name('book.delete');
         Route::get('/edit/{id}', [BookController::class, 'edit'])->name('book.edit');
+        Route::put('/edit/{id}', [BookController::class, 'update'])->name('book.update');
     });
     Route::prefix('data/user')->group(function(){
         Route::get('/', [UserController::class, 'index'])->name('data-user');
         Route::post('/create', [UserController::class, 'store'])->name('user.create');
+        Route::delete('/{id}', [UserController::class, 'delete'])->name('user.delete');
+        Route::put('/edit/{id}', [UserController::class, 'switchRole'])->name('user.update');
     });
 
 

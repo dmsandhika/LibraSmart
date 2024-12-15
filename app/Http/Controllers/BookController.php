@@ -88,5 +88,34 @@ class BookController extends Controller
         return view('admin.edit-book', compact('book', 'categories', 'status'));
     }
 
+    public function update(Request $request, $id){
+        $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'isbn' => 'required',
+            'category_id' => 'required',
+            'stock' => 'required',
+            'status' => 'required',
+            'description' => 'required',
+            'cover' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $book = Book::find($id);
+        $book->title = $request->input('title');
+        $book->author = $request->input('author');
+        $book->isbn = $request->input('isbn');
+        $book->category_id = $request->input('category_id');
+        $book->stock = $request->input('stock');
+        $book->status = $request->input('status');
+        $book->description = $request->input('description');
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('cover', 'public');
+            Storage::disk('public')->delete($book->cover);
+            $book->cover = $coverPath;
+        }
+        $book->save();
+
+        return redirect()->route('book.index')->with('success', 'Data Buku Berhasil Diubah');
+    }
+
 
 }

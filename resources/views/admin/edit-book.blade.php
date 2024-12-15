@@ -5,7 +5,7 @@
         <div class="w-full mx-auto sm:px-6 lg:px-8 min-h-screen">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-10 min-h-screen">
                 <x-small-title class="text-slate-700 ">Edit Data Buku : {{ $book->title }}</x-small-title>
-                <form action="" class="w-full px-4 space-y-5" method="post" enctype="multipart/form-data">
+                <form action="{{ route('book.update', $book->id) }}" class="w-full px-4 space-y-5" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="flex flex-col space-y-2">
@@ -73,7 +73,11 @@
                                id="cover" 
                                accept="image/*">
                     </div>
-                    
+                    <button type="submit"
+                    class="ms-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2"
+                    data-twe-ripple-init data-twe-ripple-color="light">
+                    Simpan
+                </button>
                 </form>
             </div>
         </div>

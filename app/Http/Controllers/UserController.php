@@ -17,11 +17,23 @@ class UserController extends Controller
  *
  * @return \Illuminate\View\View
  */
-    public function index(){
-        $data = User::all();
-        $no=1;
-        return view('admin.data-user', compact('data', 'no'));
+public function index(Request $request)
+{
+    $query = User::query();
+    
+    if ($request->filled('search')) {
+        $query->where(function ($q) use ($request) {
+            $q->where('name', 'LIKE', '%' . $request->search . '%')
+              ->orWhere('email', 'LIKE', '%' . $request->search . '%');
+        });
     }
+
+    $data = $query->paginate(10); 
+    $no = 1;
+
+    return view('admin.data-user', compact('data', 'no'));
+}
+
 
     public function store(Request $request){
         $request->validate([
@@ -41,5 +53,26 @@ class UserController extends Controller
             $user->syncPermissions($role->permissions);
 
             return back()->with('success', 'User Baru berhasil ditambahkan');
+    }
+
+    public function delete($id){
+        $user = User::find($id);
+        $user->syncRoles([]); 
+        $user->syncPermissions([]); 
+        $user->delete();
+        return response()->json(['success' => 'Data User Berhasil Dihapus']);
+    }
+
+    public function switchRole($id){
+        $user = User::find($id);
+        if ($user->hasRole('admin')) {
+            $user->syncRoles('member');
+        } else {
+            $user->syncRoles('admin');
+        }
+        $newRole = $user->getRoleNames()->first(); 
+        $rolePermissions = Role::findByName($newRole)->permissions;
+        $user->syncPermissions($rolePermissions);
+        return  response()->json(['success' => 'Role User Berhasil Diubah']);
     }
 }
